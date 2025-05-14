@@ -1645,22 +1645,12 @@ export namespace Prisma {
 
   export type AggregateUser = {
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
 
-  export type UserAvgAggregateOutputType = {
-    id: number | null
-  }
-
-  export type UserSumAggregateOutputType = {
-    id: number | null
-  }
-
   export type UserMinAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     password: string | null
     name: string | null
@@ -1670,7 +1660,7 @@ export namespace Prisma {
   }
 
   export type UserMaxAggregateOutputType = {
-    id: number | null
+    id: string | null
     email: string | null
     password: string | null
     name: string | null
@@ -1690,14 +1680,6 @@ export namespace Prisma {
     _all: number
   }
 
-
-  export type UserAvgAggregateInputType = {
-    id?: true
-  }
-
-  export type UserSumAggregateInputType = {
-    id?: true
-  }
 
   export type UserMinAggregateInputType = {
     id?: true
@@ -1768,18 +1750,6 @@ export namespace Prisma {
     /**
      * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
      * 
-     * Select which fields to average
-    **/
-    _avg?: UserAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: UserSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
      * Select which fields to find the minimum value
     **/
     _min?: UserMinAggregateInputType
@@ -1810,14 +1780,12 @@ export namespace Prisma {
     take?: number
     skip?: number
     _count?: UserCountAggregateInputType | true
-    _avg?: UserAvgAggregateInputType
-    _sum?: UserSumAggregateInputType
     _min?: UserMinAggregateInputType
     _max?: UserMaxAggregateInputType
   }
 
   export type UserGroupByOutputType = {
-    id: number
+    id: string
     email: string
     password: string
     name: string | null
@@ -1825,8 +1793,6 @@ export namespace Prisma {
     createdAt: Date
     updatedAt: Date
     _count: UserCountAggregateOutputType | null
-    _avg: UserAvgAggregateOutputType | null
-    _sum: UserSumAggregateOutputType | null
     _min: UserMinAggregateOutputType | null
     _max: UserMaxAggregateOutputType | null
   }
@@ -1904,7 +1870,7 @@ export namespace Prisma {
       addresses: Prisma.$AddressPayload<ExtArgs>[]
     }
     scalars: $Extensions.GetPayloadResult<{
-      id: number
+      id: string
       email: string
       password: string
       name: string | null
@@ -2336,7 +2302,7 @@ export namespace Prisma {
    * Fields of the User model
    */
   interface UserFieldRefs {
-    readonly id: FieldRef<"User", 'Int'>
+    readonly id: FieldRef<"User", 'String'>
     readonly email: FieldRef<"User", 'String'>
     readonly password: FieldRef<"User", 'String'>
     readonly name: FieldRef<"User", 'String'>
@@ -6257,21 +6223,19 @@ export namespace Prisma {
 
   export type OrderAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
     addressId: number | null
     total: number | null
   }
 
   export type OrderSumAggregateOutputType = {
     id: number | null
-    userId: number | null
     addressId: number | null
     total: number | null
   }
 
   export type OrderMinAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     addressId: number | null
     total: number | null
     status: $Enums.OrderStatus | null
@@ -6281,7 +6245,7 @@ export namespace Prisma {
 
   export type OrderMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     addressId: number | null
     total: number | null
     status: $Enums.OrderStatus | null
@@ -6303,14 +6267,12 @@ export namespace Prisma {
 
   export type OrderAvgAggregateInputType = {
     id?: true
-    userId?: true
     addressId?: true
     total?: true
   }
 
   export type OrderSumAggregateInputType = {
     id?: true
-    userId?: true
     addressId?: true
     total?: true
   }
@@ -6434,7 +6396,7 @@ export namespace Prisma {
 
   export type OrderGroupByOutputType = {
     id: number
-    userId: number
+    userId: string
     addressId: number
     total: number
     status: $Enums.OrderStatus
@@ -6534,7 +6496,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
+      userId: string
       addressId: number
       total: number
       status: $Enums.OrderStatus
@@ -6967,7 +6929,7 @@ export namespace Prisma {
    */
   interface OrderFieldRefs {
     readonly id: FieldRef<"Order", 'Int'>
-    readonly userId: FieldRef<"Order", 'Int'>
+    readonly userId: FieldRef<"Order", 'String'>
     readonly addressId: FieldRef<"Order", 'Int'>
     readonly total: FieldRef<"Order", 'Float'>
     readonly status: FieldRef<"Order", 'OrderStatus'>
@@ -8568,17 +8530,15 @@ export namespace Prisma {
 
   export type AddressAvgAggregateOutputType = {
     id: number | null
-    userId: number | null
   }
 
   export type AddressSumAggregateOutputType = {
     id: number | null
-    userId: number | null
   }
 
   export type AddressMinAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     fullName: string | null
     phone: string | null
     street: string | null
@@ -8589,7 +8549,7 @@ export namespace Prisma {
 
   export type AddressMaxAggregateOutputType = {
     id: number | null
-    userId: number | null
+    userId: string | null
     fullName: string | null
     phone: string | null
     street: string | null
@@ -8613,12 +8573,10 @@ export namespace Prisma {
 
   export type AddressAvgAggregateInputType = {
     id?: true
-    userId?: true
   }
 
   export type AddressSumAggregateInputType = {
     id?: true
-    userId?: true
   }
 
   export type AddressMinAggregateInputType = {
@@ -8743,7 +8701,7 @@ export namespace Prisma {
 
   export type AddressGroupByOutputType = {
     id: number
-    userId: number
+    userId: string
     fullName: string
     phone: string
     street: string
@@ -8841,7 +8799,7 @@ export namespace Prisma {
     }
     scalars: $Extensions.GetPayloadResult<{
       id: number
-      userId: number
+      userId: string
       fullName: string
       phone: string
       street: string
@@ -9274,7 +9232,7 @@ export namespace Prisma {
    */
   interface AddressFieldRefs {
     readonly id: FieldRef<"Address", 'Int'>
-    readonly userId: FieldRef<"Address", 'Int'>
+    readonly userId: FieldRef<"Address", 'String'>
     readonly fullName: FieldRef<"Address", 'String'>
     readonly phone: FieldRef<"Address", 'String'>
     readonly street: FieldRef<"Address", 'String'>
@@ -9851,20 +9809,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
-
-
-  /**
-   * Reference to a field of type 'Int[]'
-   */
-  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
-    
-
-
-  /**
    * Reference to a field of type 'String'
    */
   export type StringFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'String'>
@@ -9903,6 +9847,20 @@ export namespace Prisma {
    * Reference to a field of type 'DateTime[]'
    */
   export type ListDateTimeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'DateTime[]'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Int[]'
+   */
+  export type ListIntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int[]'>
     
 
 
@@ -9955,7 +9913,7 @@ export namespace Prisma {
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
     NOT?: UserWhereInput | UserWhereInput[]
-    id?: IntFilter<"User"> | number
+    id?: StringFilter<"User"> | string
     email?: StringFilter<"User"> | string
     password?: StringFilter<"User"> | string
     name?: StringNullableFilter<"User"> | string | null
@@ -9979,7 +9937,7 @@ export namespace Prisma {
   }
 
   export type UserWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
+    id?: string
     email?: string
     AND?: UserWhereInput | UserWhereInput[]
     OR?: UserWhereInput[]
@@ -10002,17 +9960,15 @@ export namespace Prisma {
     createdAt?: SortOrder
     updatedAt?: SortOrder
     _count?: UserCountOrderByAggregateInput
-    _avg?: UserAvgOrderByAggregateInput
     _max?: UserMaxOrderByAggregateInput
     _min?: UserMinOrderByAggregateInput
-    _sum?: UserSumOrderByAggregateInput
   }
 
   export type UserScalarWhereWithAggregatesInput = {
     AND?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
     OR?: UserScalarWhereWithAggregatesInput[]
     NOT?: UserScalarWhereWithAggregatesInput | UserScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"User"> | number
+    id?: StringWithAggregatesFilter<"User"> | string
     email?: StringWithAggregatesFilter<"User"> | string
     password?: StringWithAggregatesFilter<"User"> | string
     name?: StringNullableWithAggregatesFilter<"User"> | string | null
@@ -10226,7 +10182,7 @@ export namespace Prisma {
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
     id?: IntFilter<"Order"> | number
-    userId?: IntFilter<"Order"> | number
+    userId?: StringFilter<"Order"> | string
     addressId?: IntFilter<"Order"> | number
     total?: FloatFilter<"Order"> | number
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
@@ -10255,7 +10211,7 @@ export namespace Prisma {
     AND?: OrderWhereInput | OrderWhereInput[]
     OR?: OrderWhereInput[]
     NOT?: OrderWhereInput | OrderWhereInput[]
-    userId?: IntFilter<"Order"> | number
+    userId?: StringFilter<"Order"> | string
     addressId?: IntFilter<"Order"> | number
     total?: FloatFilter<"Order"> | number
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
@@ -10286,7 +10242,7 @@ export namespace Prisma {
     OR?: OrderScalarWhereWithAggregatesInput[]
     NOT?: OrderScalarWhereWithAggregatesInput | OrderScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Order"> | number
-    userId?: IntWithAggregatesFilter<"Order"> | number
+    userId?: StringWithAggregatesFilter<"Order"> | string
     addressId?: IntWithAggregatesFilter<"Order"> | number
     total?: FloatWithAggregatesFilter<"Order"> | number
     status?: EnumOrderStatusWithAggregatesFilter<"Order"> | $Enums.OrderStatus
@@ -10362,7 +10318,7 @@ export namespace Prisma {
     OR?: AddressWhereInput[]
     NOT?: AddressWhereInput | AddressWhereInput[]
     id?: IntFilter<"Address"> | number
-    userId?: IntFilter<"Address"> | number
+    userId?: StringFilter<"Address"> | string
     fullName?: StringFilter<"Address"> | string
     phone?: StringFilter<"Address"> | string
     street?: StringFilter<"Address"> | string
@@ -10391,7 +10347,7 @@ export namespace Prisma {
     AND?: AddressWhereInput | AddressWhereInput[]
     OR?: AddressWhereInput[]
     NOT?: AddressWhereInput | AddressWhereInput[]
-    userId?: IntFilter<"Address"> | number
+    userId?: StringFilter<"Address"> | string
     fullName?: StringFilter<"Address"> | string
     phone?: StringFilter<"Address"> | string
     street?: StringFilter<"Address"> | string
@@ -10423,7 +10379,7 @@ export namespace Prisma {
     OR?: AddressScalarWhereWithAggregatesInput[]
     NOT?: AddressScalarWhereWithAggregatesInput | AddressScalarWhereWithAggregatesInput[]
     id?: IntWithAggregatesFilter<"Address"> | number
-    userId?: IntWithAggregatesFilter<"Address"> | number
+    userId?: StringWithAggregatesFilter<"Address"> | string
     fullName?: StringWithAggregatesFilter<"Address"> | string
     phone?: StringWithAggregatesFilter<"Address"> | string
     street?: StringWithAggregatesFilter<"Address"> | string
@@ -10433,6 +10389,7 @@ export namespace Prisma {
   }
 
   export type UserCreateInput = {
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -10444,7 +10401,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -10456,6 +10413,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10467,7 +10425,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10479,7 +10437,7 @@ export namespace Prisma {
   }
 
   export type UserCreateManyInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -10489,6 +10447,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10498,7 +10457,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -10720,7 +10679,7 @@ export namespace Prisma {
 
   export type OrderUncheckedCreateInput = {
     id?: number
-    userId: number
+    userId: string
     addressId: number
     total: number
     status?: $Enums.OrderStatus
@@ -10741,7 +10700,7 @@ export namespace Prisma {
 
   export type OrderUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     addressId?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
@@ -10752,7 +10711,7 @@ export namespace Prisma {
 
   export type OrderCreateManyInput = {
     id?: number
-    userId: number
+    userId: string
     addressId: number
     total: number
     status?: $Enums.OrderStatus
@@ -10769,7 +10728,7 @@ export namespace Prisma {
 
   export type OrderUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     addressId?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
@@ -10840,7 +10799,7 @@ export namespace Prisma {
 
   export type AddressUncheckedCreateInput = {
     id?: number
-    userId: number
+    userId: string
     fullName: string
     phone: string
     street: string
@@ -10863,7 +10822,7 @@ export namespace Prisma {
 
   export type AddressUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
@@ -10875,7 +10834,7 @@ export namespace Prisma {
 
   export type AddressCreateManyInput = {
     id?: number
-    userId: number
+    userId: string
     fullName: string
     phone: string
     street: string
@@ -10895,24 +10854,13 @@ export namespace Prisma {
 
   export type AddressUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
     city?: StringFieldUpdateOperationsInput | string
     country?: StringFieldUpdateOperationsInput | string
     zipCode?: StringFieldUpdateOperationsInput | string
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -10998,10 +10946,6 @@ export namespace Prisma {
     updatedAt?: SortOrder
   }
 
-  export type UserAvgOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
   export type UserMaxOrderByAggregateInput = {
     id?: SortOrder
     email?: SortOrder
@@ -11020,26 +10964,6 @@ export namespace Prisma {
     role?: SortOrder
     createdAt?: SortOrder
     updatedAt?: SortOrder
-  }
-
-  export type UserSumOrderByAggregateInput = {
-    id?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type StringWithAggregatesFilter<$PrismaModel = never> = {
@@ -11100,6 +11024,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type FloatFilter<$PrismaModel = never> = {
@@ -11196,6 +11131,22 @@ export namespace Prisma {
     id?: SortOrder
     price?: SortOrder
     stock?: SortOrder
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type FloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -11328,7 +11279,6 @@ export namespace Prisma {
 
   export type OrderAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     addressId?: SortOrder
     total?: SortOrder
   }
@@ -11355,7 +11305,6 @@ export namespace Prisma {
 
   export type OrderSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
     addressId?: SortOrder
     total?: SortOrder
   }
@@ -11460,7 +11409,6 @@ export namespace Prisma {
 
   export type AddressAvgOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
   }
 
   export type AddressMaxOrderByAggregateInput = {
@@ -11487,7 +11435,6 @@ export namespace Prisma {
 
   export type AddressSumOrderByAggregateInput = {
     id?: SortOrder
-    userId?: SortOrder
   }
 
   export type OrderCreateNestedManyWithoutUserInput = {
@@ -11562,14 +11509,6 @@ export namespace Prisma {
     deleteMany?: AddressScalarWhereInput | AddressScalarWhereInput[]
   }
 
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
-  }
-
   export type OrderUncheckedUpdateManyWithoutUserNestedInput = {
     create?: XOR<OrderCreateWithoutUserInput, OrderUncheckedCreateWithoutUserInput> | OrderCreateWithoutUserInput[] | OrderUncheckedCreateWithoutUserInput[]
     connectOrCreate?: OrderCreateOrConnectWithoutUserInput | OrderCreateOrConnectWithoutUserInput[]
@@ -11641,6 +11580,14 @@ export namespace Prisma {
   }
 
   export type FloatFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
+  export type IntFieldUpdateOperationsInput = {
     set?: number
     increment?: number
     decrement?: number
@@ -11988,17 +11935,6 @@ export namespace Prisma {
     deleteMany?: OrderScalarWhereInput | OrderScalarWhereInput[]
   }
 
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12045,33 +11981,6 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
-  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[] | ListIntFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type NestedFloatFilter<$PrismaModel = never> = {
-    equals?: number | FloatFieldRefInput<$PrismaModel>
-    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
-    lt?: number | FloatFieldRefInput<$PrismaModel>
-    lte?: number | FloatFieldRefInput<$PrismaModel>
-    gt?: number | FloatFieldRefInput<$PrismaModel>
-    gte?: number | FloatFieldRefInput<$PrismaModel>
-    not?: NestedFloatFilter<$PrismaModel> | number
-  }
-
   export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[] | ListStringFieldRefInput<$PrismaModel>
@@ -12087,6 +11996,17 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
   }
 
   export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -12141,11 +12061,38 @@ export namespace Prisma {
     _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
+  export type NestedFloatFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel>
+    in?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListFloatFieldRefInput<$PrismaModel>
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatFilter<$PrismaModel> | number
+  }
+
   export type NestedEnumProductStatusFilter<$PrismaModel = never> = {
     equals?: $Enums.ProductStatus | EnumProductStatusFieldRefInput<$PrismaModel>
     in?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
     notIn?: $Enums.ProductStatus[] | ListEnumProductStatusFieldRefInput<$PrismaModel>
     not?: NestedEnumProductStatusFilter<$PrismaModel> | $Enums.ProductStatus
+  }
+
+  export type NestedIntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[] | ListIntFieldRefInput<$PrismaModel>
+    notIn?: number[] | ListIntFieldRefInput<$PrismaModel>
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
   }
 
   export type NestedFloatWithAggregatesFilter<$PrismaModel = never> = {
@@ -12299,7 +12246,7 @@ export namespace Prisma {
     OR?: OrderScalarWhereInput[]
     NOT?: OrderScalarWhereInput | OrderScalarWhereInput[]
     id?: IntFilter<"Order"> | number
-    userId?: IntFilter<"Order"> | number
+    userId?: StringFilter<"Order"> | string
     addressId?: IntFilter<"Order"> | number
     total?: FloatFilter<"Order"> | number
     status?: EnumOrderStatusFilter<"Order"> | $Enums.OrderStatus
@@ -12328,7 +12275,7 @@ export namespace Prisma {
     OR?: AddressScalarWhereInput[]
     NOT?: AddressScalarWhereInput | AddressScalarWhereInput[]
     id?: IntFilter<"Address"> | number
-    userId?: IntFilter<"Address"> | number
+    userId?: StringFilter<"Address"> | string
     fullName?: StringFilter<"Address"> | string
     phone?: StringFilter<"Address"> | string
     street?: StringFilter<"Address"> | string
@@ -12669,6 +12616,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutOrdersInput = {
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -12679,7 +12627,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutOrdersInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -12706,7 +12654,7 @@ export namespace Prisma {
 
   export type AddressUncheckedCreateWithoutOrdersInput = {
     id?: number
-    userId: number
+    userId: string
     fullName: string
     phone: string
     street: string
@@ -12755,6 +12703,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutOrdersInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12765,7 +12714,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutOrdersInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -12798,7 +12747,7 @@ export namespace Prisma {
 
   export type AddressUncheckedUpdateWithoutOrdersInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     fullName?: StringFieldUpdateOperationsInput | string
     phone?: StringFieldUpdateOperationsInput | string
     street?: StringFieldUpdateOperationsInput | string
@@ -12834,7 +12783,7 @@ export namespace Prisma {
 
   export type OrderUncheckedCreateWithoutItemsInput = {
     id?: number
-    userId: number
+    userId: string
     addressId: number
     total: number
     status?: $Enums.OrderStatus
@@ -12923,7 +12872,7 @@ export namespace Prisma {
 
   export type OrderUncheckedUpdateWithoutItemsInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     addressId?: IntFieldUpdateOperationsInput | number
     total?: FloatFieldUpdateOperationsInput | number
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
@@ -12998,6 +12947,7 @@ export namespace Prisma {
   }
 
   export type UserCreateWithoutAddressesInput = {
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -13008,7 +12958,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedCreateWithoutAddressesInput = {
-    id?: number
+    id?: string
     email: string
     password: string
     name?: string | null
@@ -13034,7 +12984,7 @@ export namespace Prisma {
 
   export type OrderUncheckedCreateWithoutAddressInput = {
     id?: number
-    userId: number
+    userId: string
     total: number
     status?: $Enums.OrderStatus
     createdAt?: Date | string
@@ -13064,6 +13014,7 @@ export namespace Prisma {
   }
 
   export type UserUpdateWithoutAddressesInput = {
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13074,7 +13025,7 @@ export namespace Prisma {
   }
 
   export type UserUncheckedUpdateWithoutAddressesInput = {
-    id?: IntFieldUpdateOperationsInput | number
+    id?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     name?: NullableStringFieldUpdateOperationsInput | string | null
@@ -13317,7 +13268,7 @@ export namespace Prisma {
 
   export type OrderCreateManyAddressInput = {
     id?: number
-    userId: number
+    userId: string
     total: number
     status?: $Enums.OrderStatus
     createdAt?: Date | string
@@ -13335,7 +13286,7 @@ export namespace Prisma {
 
   export type OrderUncheckedUpdateWithoutAddressInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     total?: FloatFieldUpdateOperationsInput | number
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string
@@ -13345,7 +13296,7 @@ export namespace Prisma {
 
   export type OrderUncheckedUpdateManyWithoutAddressInput = {
     id?: IntFieldUpdateOperationsInput | number
-    userId?: IntFieldUpdateOperationsInput | number
+    userId?: StringFieldUpdateOperationsInput | string
     total?: FloatFieldUpdateOperationsInput | number
     status?: EnumOrderStatusFieldUpdateOperationsInput | $Enums.OrderStatus
     createdAt?: DateTimeFieldUpdateOperationsInput | Date | string

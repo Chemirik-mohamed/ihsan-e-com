@@ -10,4 +10,12 @@ export const userResponse = z.object({
 
 export type userDto = z.infer<typeof userResponse>;
 
-const userListResponse = z.array(userResponse);
+export const userListResponse = z.array(userResponse);
+
+export const schemasParamUpdateRole = z.object({
+	id: z.string().uuid(),
+});
+
+export const updateRoleSchema = z.object({
+	role: z.enum(["ADMIN", "CLIENT"]),
+});
