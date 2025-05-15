@@ -1,7 +1,7 @@
 import type { MiddlewareHandler } from "hono";
 import type { Context } from "hono";
-import { verifyToken } from "../lib/jwt";
-import { jwtSchema } from "../schemas/jwtScheama";
+import { jwtSchema } from "../../schemas/jwtScheama";
+import { verifyToken } from "../jwt";
 
 export const authMiddleware: MiddlewareHandler = async (c: Context, next) => {
 	const header = c.req.header("Authorization");
