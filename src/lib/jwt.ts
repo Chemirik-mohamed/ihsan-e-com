@@ -1,10 +1,14 @@
 import { SignJWT } from "jose";
 import { jwtVerify } from "jose";
-import { jwtSchema, type JwtPayload } from "../schemas/jwtScheama";
+import { type JwtPayload, jwtSchema } from "../schemas/jwtScheama";
 
 import "dotenv/config";
 
 const secret = new TextEncoder().encode(process.env.JWT_SECRET);
+
+if (!process.env.JWT_SECRET) {
+	throw new Error("JWT_SECRET manquant dans l'environnement");
+}
 
 export const generateToken = async (payload: JwtPayload): Promise<string> => {
 	return await new SignJWT(payload)

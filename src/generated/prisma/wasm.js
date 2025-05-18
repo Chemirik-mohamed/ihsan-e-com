@@ -133,11 +133,14 @@ exports.Prisma.UserScalarFieldEnum = {
 exports.Prisma.ProductScalarFieldEnum = {
   id: 'id',
   name: 'name',
+  slug: 'slug',
   description: 'description',
   sku: 'sku',
   price: 'price',
   stock: 'stock',
   status: 'status',
+  metadata: 'metadata',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -147,23 +150,37 @@ exports.Prisma.ProductVariantScalarFieldEnum = {
   name: 'name',
   color: 'color',
   sku: 'sku',
+  isDefault: 'isDefault',
   productId: 'productId',
-  stock: 'stock'
+  stock: 'stock',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.ImageScalarFieldEnum = {
   id: 'id',
   url: 'url',
   altText: 'altText',
-  productId: 'productId'
+  productId: 'productId',
+  deletedAt: 'deletedAt',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.OrderScalarFieldEnum = {
   id: 'id',
+  reference: 'reference',
   userId: 'userId',
-  addressId: 'addressId',
   total: 'total',
   status: 'status',
+  fullName: 'fullName',
+  phone: 'phone',
+  street: 'street',
+  city: 'city',
+  country: 'country',
+  zipCode: 'zipCode',
+  deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
 };
@@ -173,23 +190,19 @@ exports.Prisma.OrderItemScalarFieldEnum = {
   orderId: 'orderId',
   productId: 'productId',
   variantId: 'variantId',
-  quantity: 'quantity'
-};
-
-exports.Prisma.AddressScalarFieldEnum = {
-  id: 'id',
-  userId: 'userId',
-  fullName: 'fullName',
-  phone: 'phone',
-  street: 'street',
-  city: 'city',
-  country: 'country',
-  zipCode: 'zipCode'
+  quantity: 'quantity',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
 };
 
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
+};
+
+exports.Prisma.NullableJsonNullValueInput = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
 };
 
 exports.Prisma.QueryMode = {
@@ -200,6 +213,12 @@ exports.Prisma.QueryMode = {
 exports.Prisma.NullsOrder = {
   first: 'first',
   last: 'last'
+};
+
+exports.Prisma.JsonNullValueFilter = {
+  DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull,
+  AnyNull: Prisma.AnyNull
 };
 exports.UserRole = exports.$Enums.UserRole = {
   CLIENT: 'CLIENT',
@@ -224,8 +243,7 @@ exports.Prisma.ModelName = {
   ProductVariant: 'ProductVariant',
   Image: 'Image',
   Order: 'Order',
-  OrderItem: 'OrderItem',
-  Address: 'Address'
+  OrderItem: 'OrderItem'
 };
 
 /**

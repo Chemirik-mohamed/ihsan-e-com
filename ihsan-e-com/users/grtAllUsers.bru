@@ -1,0 +1,15 @@
+meta {
+  name: grtAllUsers
+  type: http
+  seq: 5
+}
+
+get {
+  url: http://localhost:3000/api/users
+  body: none
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImRkNDM2M2JhLTU3NTMtNDhiZS1iYTliLTU4M2YzNWI5ZTc5NSIsIm5hbWUiOiJBZG1pbiBJaHNhbiIsImVtYWlsIjoiYWRtaW5AaWhzYW4uY29tIiwicm9sZSI6IkFETUlOIiwiaWF0IjoxNzQ3MzM5MzA3LCJleHAiOjE3NDc5NDQxMDd9.zDxHiN2x99hGtaiuih41xTLfLpDkgFd6IsnRqLiu3Bo
+}

@@ -15,7 +15,7 @@ export const signupUser = async (c: Context) => {
 	});
 
 	if (existing) {
-		throw new Error("Email déjà utilisé");
+		return c.json({ error: "Email déjà utilisé" }, 409);
 	}
 
 	const hash = await hashPassword(parsed.password);
