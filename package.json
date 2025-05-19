@@ -7,7 +7,10 @@
     "dev": "tsx watch src/server.ts",
     "generate": "npx prisma generate",
     "studio": "npx prisma studio",
-    "seed": "npx tsx prisma/seed.ts"
+    "seed": "npx tsx prisma/seed.ts",
+     "reset": "npm run db:drop && npm run db:push && npm run seed",
+  "db:drop": "prisma migrate reset --force --skip-seed",
+  "db:push": "prisma db push"
   },
   "keywords": [],
   "author": "",

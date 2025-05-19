@@ -1,0 +1,30 @@
+meta {
+  name: createProduct
+  type: http
+  seq: 2
+}
+
+post {
+  url: http://localhost:3000/api/products
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjE1ZjI2NGU4LTM3NTMtNDE5OS04MDhhLTA0ZmEyYjY4NWRjZiIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDc2NDY0ODksImV4cCI6MTc0ODI1MTI4OX0.loSrd3vLIScNExA-oPfnMdU9XGXr76x7TZHZfjsP9PM
+}
+
+body:json {
+  {
+        "name": "Montre Saphir",
+        "slug": "montre-test",
+        "description": "Une montre élégante.",
+        "sku": "SAPH20001",
+        "price": 199.99,
+        "stock": 20,
+        "status": "EN_STOCK",
+        "metadata": {
+          "couleur": "noir"
+        }
+  }
+}

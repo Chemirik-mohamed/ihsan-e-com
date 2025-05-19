@@ -5,7 +5,7 @@ export const userResponse = z.object({
 	name: z.string(),
 	email: z.string().email(),
 	role: z.enum(["CLIENT", "ADMIN"]),
-	createdAt: z.date(),
+	createdAt: z.string().datetime(),
 });
 
 export type userDto = z.infer<typeof userResponse>;
