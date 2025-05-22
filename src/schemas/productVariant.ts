@@ -1,6 +1,10 @@
 import { z } from "zod";
 
-// Base schema sans les champs automatiques (id, createdAt, etc.)
+export const productVariantIdParamsSchema = z.object({
+	id: z.string().uuid("L'ID fourni doit être un UUID valide."),
+});
+
+// Schéma pour la création/mise à jour (input utilisateur)
 export const productVariantBaseSchema = z.object({
 	name: z.string().min(1, "Le nom est requis"),
 	color: z.string().min(1, "La couleur est requise"),
@@ -10,12 +14,12 @@ export const productVariantBaseSchema = z.object({
 	stock: z.number().int().min(0, "Le stock doit être un entier positif"),
 });
 
-// Schéma complet pour valider un ProductVariant récupéré depuis la BDD
+// Schéma de réponse API (côté frontend : tout en string sauf stock/isDefault)
 export const productVariantSchema = productVariantBaseSchema.extend({
 	id: z.string().uuid(),
-	createdAt: z.date(),
-	updatedAt: z.date(),
-	deletedAt: z.date().nullable().optional(),
+	createdAt: z.string(), // <- string ISO
+	updatedAt: z.string(),
+	deletedAt: z.string().nullable().optional(),
 });
 
 export type ProductVariantInput = z.infer<typeof productVariantBaseSchema>;

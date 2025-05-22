@@ -20,10 +20,16 @@ productRouter.get("/", withErrorHandler(getAllProduct));
 
 productRouter.get("/:id", withErrorHandler(getProductById));
 
-productRouter.patch("/:id", isAdminMiddleware, withErrorHandler(updateProduct));
+productRouter.patch(
+	"/:id",
+	authMiddleware,
+	isAdminMiddleware,
+	withErrorHandler(updateProduct),
+);
 
 productRouter.delete(
 	"/:id",
+	authMiddleware,
 	isAdminMiddleware,
 	withErrorHandler(deleteProduct),
 );

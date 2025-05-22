@@ -1,11 +1,11 @@
-import type { Prisma } from "../../generated/prisma/client";
+import { date } from "zod";
+import type { Prisma, User } from "../../generated/prisma/client";
 import { prisma } from "../../lib/prisma";
-import { userListResponse } from "../../schemas/userSchema";
-import type { userDto } from "../../schemas/userSchema";
+import type { LightUser } from "../../types/user";
 
 export async function getUsersByEmail(
 	emailSearch?: string,
-): Promise<userDto[]> {
+): Promise<LightUser[]> {
 	const filter: Prisma.UserWhereInput = emailSearch
 		? {
 				email: {
@@ -26,5 +26,5 @@ export async function getUsersByEmail(
 		},
 	});
 
-	return userListResponse.parse(users);
+	return users;
 }

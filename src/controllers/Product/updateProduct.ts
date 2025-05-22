@@ -1,5 +1,4 @@
 import type { Context } from "hono";
-import { z } from "zod";
 import { prisma } from "../../lib/prisma";
 import {
 	productIdParamsSchema,
@@ -24,9 +23,15 @@ export const updateProduct = async (c: Context): Promise<Response> => {
 			metadata: body.metadata,
 		},
 	});
+	const productForResponse = {
+		...productUpdate,
+		createdAt: productUpdate.createdAt.toISOString(),
+		updatedAt: productUpdate.updatedAt.toISOString(),
+	};
+
 	const response = productUpdatedResponseSchema.parse({
 		message: "Produit mis à jour.",
-		data: productUpdate,
+		data: productForResponse,
 	});
 	return c.json(response);
 };

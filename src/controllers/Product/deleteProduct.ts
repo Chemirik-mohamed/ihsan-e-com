@@ -20,9 +20,15 @@ export const deleteProduct = async (c: Context): Promise<Response> => {
 		where: { id: params.id },
 	});
 
+	const productForResponse = {
+		...deletedProduct,
+		createdAt: deletedProduct.createdAt.toISOString(),
+		updatedAt: deletedProduct.updatedAt.toISOString(),
+	};
+
 	const response = productDeletedResponseSchema.parse({
 		message: "Produit supprimé.",
-		data: deletedProduct,
+		data: productForResponse,
 	});
 
 	return c.json(response);

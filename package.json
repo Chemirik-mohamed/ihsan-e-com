@@ -8,9 +8,9 @@
     "generate": "npx prisma generate",
     "studio": "npx prisma studio",
     "seed": "npx tsx prisma/seed.ts",
-     "reset": "npm run db:drop && npm run db:push && npm run seed",
-  "db:drop": "prisma migrate reset --force --skip-seed",
-  "db:push": "prisma db push"
+    "reset": "npm run db:drop && npm run db:push && npm run seed",
+    "db:drop": "prisma migrate reset --force --skip-seed",
+    "db:push": "prisma db push"
   },
   "keywords": [],
   "author": "",
@@ -20,9 +20,11 @@
     "@hono/node-server": "^1.14.1",
     "@prisma/client": "^6.7.0",
     "bcryptjs": "^3.0.2",
+    "cloudinary": "^2.6.1",
     "dotenv": "^16.5.0",
     "hono": "^4.7.9",
     "jose": "^6.0.11",
+    "slugify": "^1.6.6",
     "zod": "^3.24.4"
   },
   "devDependencies": {

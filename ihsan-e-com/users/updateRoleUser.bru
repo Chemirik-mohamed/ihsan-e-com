@@ -1,0 +1,21 @@
+meta {
+  name: updateRoleUser
+  type: http
+  seq: 6
+}
+
+patch {
+  url: http://localhost:3000/api/users/d97a3b88-48b8-4a3d-9c2f-d4a2cc22495c/role
+  body: json
+  auth: inherit
+}
+
+headers {
+  Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6ImY4ZDYxODg4LTI3N2MtNDNiOS1iNDkzLTEyZGI5ZjhlZGU4NCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDc4MjM4NDksImV4cCI6MTc0ODQyODY0OX0.CP9Ig_7-NaG0Qg_div_lXkEe76hEttSY7KkSq2r5q94
+}
+
+body:json {
+  {
+    "role":"ADMIN"
+  }
+}

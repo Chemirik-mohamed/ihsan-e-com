@@ -1,18 +1,19 @@
 import type { Context } from "hono";
-import { userListResponse } from "../../schemas/userSchema";
 import { getUsersByEmail } from "../../services/user/userService";
+import { serializeLightUser } from "../../types/user";
 
 export const getAllUsers = async (c: Context): Promise<Response> => {
 	const emailSearch = c.req.query("search")?.trim() || "";
 
 	const users = await getUsersByEmail(emailSearch);
 
-	const parsed = userListResponse.parse(users);
+	const data = users.map(serializeLightUser);
+
 	return c.json({
 		message: emailSearch
 			? "Résultat de recherche"
 			: "Liste complète des utilisateurs",
-		count: parsed.length,
-		data: parsed,
+		count: data.length,
+		data,
 	});
 };

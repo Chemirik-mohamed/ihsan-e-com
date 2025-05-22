@@ -20,9 +20,15 @@ export const createProduct = async (c: Context): Promise<Response> => {
 		data: body,
 	});
 
+	const productForResponse = {
+		...product,
+		createdAt: product.createdAt.toISOString(),
+		updatedAt: product.updatedAt.toISOString(),
+	};
+
 	const response = productCreatedResponseSchema.parse({
 		message: "Produit créé.",
-		data: product,
+		data: productForResponse,
 	});
 
 	return c.json(response);

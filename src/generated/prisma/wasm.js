@@ -163,6 +163,7 @@ exports.Prisma.ImageScalarFieldEnum = {
   url: 'url',
   altText: 'altText',
   productId: 'productId',
+  cloudinaryId: 'cloudinaryId',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -180,6 +181,8 @@ exports.Prisma.OrderScalarFieldEnum = {
   city: 'city',
   country: 'country',
   zipCode: 'zipCode',
+  paymentMethod: 'paymentMethod',
+  note: 'note',
   deletedAt: 'deletedAt',
   createdAt: 'createdAt',
   updatedAt: 'updatedAt'
@@ -188,6 +191,25 @@ exports.Prisma.OrderScalarFieldEnum = {
 exports.Prisma.OrderItemScalarFieldEnum = {
   id: 'id',
   orderId: 'orderId',
+  productId: 'productId',
+  variantId: 'variantId',
+  quantity: 'quantity',
+  unitPrice: 'unitPrice',
+  total: 'total',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CartScalarFieldEnum = {
+  id: 'id',
+  userId: 'userId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+};
+
+exports.Prisma.CartItemScalarFieldEnum = {
+  id: 'id',
+  cartId: 'cartId',
   productId: 'productId',
   variantId: 'variantId',
   quantity: 'quantity',
@@ -237,13 +259,22 @@ exports.OrderStatus = exports.$Enums.OrderStatus = {
   CANCELLED: 'CANCELLED'
 };
 
+exports.PaymentMethod = exports.$Enums.PaymentMethod = {
+  CARD: 'CARD',
+  PAYPAL: 'PAYPAL',
+  CASH_ON_DELIVERY: 'CASH_ON_DELIVERY',
+  BANK_TRANSFER: 'BANK_TRANSFER'
+};
+
 exports.Prisma.ModelName = {
   User: 'User',
   Product: 'Product',
   ProductVariant: 'ProductVariant',
   Image: 'Image',
   Order: 'Order',
-  OrderItem: 'OrderItem'
+  OrderItem: 'OrderItem',
+  Cart: 'Cart',
+  CartItem: 'CartItem'
 };
 
 /**
