@@ -13,6 +13,7 @@ export const getProductById = async (c: Context): Promise<Response> => {
 		where: { id: body.id },
 		include: {
 			variants: true,
+			category: true,
 		},
 	});
 
@@ -24,6 +25,13 @@ export const getProductById = async (c: Context): Promise<Response> => {
 		createdAt: product.createdAt.toISOString(),
 		updatedAt: product.updatedAt.toISOString(),
 		deletedAt: product.deletedAt?.toISOString() ?? null,
+		category: product.category
+			? {
+					...product.category,
+					createdAt: product.category.createdAt.toISOString(),
+					updatedAt: product.category.updatedAt.toISOString(),
+				}
+			: null,
 		variants: product.variants.map((variant) => ({
 			...variant,
 			createdAt: variant.createdAt.toISOString(),

@@ -16,7 +16,10 @@ export const withErrorHandler = (handler: Handler) => {
 			}
 			if (error instanceof Prisma.PrismaClientKnownRequestError) {
 				if (error.code === "P2025") {
-					return c.json({ error: "Utilisateur non trouvé" }, 404);
+					return c.json({ error: "Enregistrement non trouvé" }, 404);
+				}
+				if (error.code === "P2002") {
+					return c.json({ error: "Cette valeur existe déjà" }, 409);
 				}
 			}
 			return c.json(

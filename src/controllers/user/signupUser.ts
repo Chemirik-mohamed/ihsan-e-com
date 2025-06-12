@@ -10,14 +10,6 @@ export const signupUser = async (c: Context) => {
 
 	const parsed = schemaSignup.parse(body);
 
-	const existing = await prisma.user.findUnique({
-		where: { email: parsed.email },
-	});
-
-	if (existing) {
-		return c.json({ error: "Email déjà utilisé" }, 409);
-	}
-
 	const hash = await hashPassword(parsed.password);
 
 	const user = await prisma.user.create({

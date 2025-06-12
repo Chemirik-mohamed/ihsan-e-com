@@ -8,14 +8,6 @@ export const createProductVariant = async (c: Context): Promise<Response> => {
 	// 1. Valider les données reçues avec Zod (input utilisateur)
 	const data = productVariantBaseSchema.parse(await c.req.json());
 
-	// 2. Vérifier l’unicité du SKU
-	const existing = await prisma.productVariant.findUnique({
-		where: { sku: data.sku },
-	});
-
-	if (existing) {
-		return c.json({ error: "Une variante avec ce SKU existe déjà." }, 409);
-	}
 	const product = await prisma.product.findUnique({
 		where: { id: data.productId },
 	});

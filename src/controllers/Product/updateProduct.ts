@@ -20,7 +20,8 @@ export const updateProduct = async (c: Context): Promise<Response> => {
 			price: body.price,
 			stock: body.stock,
 			status: body.status,
-			metadata: body.metadata,
+			categorySlug: body.categorySlug,
+			metadata: body.metadata ?? undefined,
 		},
 	});
 	const productForResponse = {

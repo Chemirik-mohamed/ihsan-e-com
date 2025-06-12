@@ -39,6 +39,12 @@ enum PaymentMethod {
   BANK_TRANSFER
 }
 
+enum Gender {
+  MALE
+  FEMALE
+  OTHER
+}
+
 // Models
 
 model User {
@@ -54,24 +60,27 @@ model User {
 }
 
 model Product {
-  id          String           @id @default(uuid()) @map("product_id")
-  name        String
-  slug        String           @unique
-  description String?
-  sku         String           @unique
-  price       Float
-  stock       Int
-  status      ProductStatus    @default(EN_STOCK)
-  variants    ProductVariant[]
-  images      Image[]
-  orderItems  OrderItem[]
-  metadata    Json?
-  deletedAt   DateTime?
-  createdAt   DateTime         @default(now())
-  updatedAt   DateTime         @updatedAt
-  cartItems   CartItem[]
+  id           String           @id @default(uuid()) @map("product_id")
+  name         String
+  slug         String           @unique
+  description  String?
+  sku          String           @unique
+  price        Float
+  stock        Int
+  status       ProductStatus    @default(EN_STOCK)
+  category     Category?        @relation(fields: [categorySlug], references: [slug])
+  categorySlug String?
+  variants     ProductVariant[]
+  images       Image[]
+  orderItems   OrderItem[]
+  metadata     Json?
+  deletedAt    DateTime?
+  createdAt    DateTime         @default(now())
+  updatedAt    DateTime         @updatedAt
+  cartItems    CartItem[]
 
   @@index([status])
+  @@index([categorySlug])
 }
 
 model ProductVariant {
@@ -88,6 +97,16 @@ model ProductVariant {
   createdAt  DateTime    @default(now())
   updatedAt  DateTime    @updatedAt
   cartItems  CartItem[]
+}
+
+model Category {
+  id        String    @id @default(uuid()) @map("category_id")
+  name      String
+  slug      String    @unique
+  products  Product[]
+  deletedAt DateTime?
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
 }
 
 model Image {

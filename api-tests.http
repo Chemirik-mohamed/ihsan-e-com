@@ -1,0 +1,149 @@
+### ===============================
+### 🔐 AUTHENTICATION
+### ===============================
+
+### 1. Signup User
+POST http://localhost:3000/api/users/signup
+Content-Type: application/json
+
+{
+  "email": "newuser@example.com",
+  "password": "password123",
+  "name": "Nouvel Utilisateur"
+}
+
+### 2. Login User
+POST http://localhost:3000/api/users/login
+Content-Type: application/json
+
+{
+  "email": "admin@example.com",
+  "password": "admin1234"
+}
+
+### ===============================
+### 👤 USERS
+### ===============================
+
+### 3. Get Me
+GET http://localhost:3000/api/users/me
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+
+### 4. Get All Users
+GET http://localhost:3000/api/users
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+
+### 5. Search Users by Email
+GET http://localhost:3000/api/users?search=client1@example.com
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+
+### 6. Update User Role
+PATCH http://localhost:3000/api/users/1ff548a0-8fad-4cbd-b901-66f4ba4d8865/role
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "role": "ADMIN"
+}
+
+### ===============================
+### 🏷️ CATEGORIES
+### ===============================
+
+### 7. Create Category
+POST http://localhost:3000/api/categories
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "name": "test1",
+  "slug": "test2"
+}
+
+### ===============================
+### 📦 PRODUCTS
+### ===============================
+
+### 8. Create Product
+POST http://localhost:3000/api/products
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "name": "Apple Watch Series 9",
+  "slug": "apple-watch-series-9",
+  "description": "Montre connectée Apple avec GPS, écran Retina Always-On et capteurs de santé avancés",
+  "sku": "APPLE-AW9-45MM-GPS",
+  "price": 429.99,
+  "stock": 15,
+  "status": "EN_STOCK",
+  "categorySlug": "test-category",
+  "metadata": {
+    "taille": "45mm",
+    "couleur": "Midnight",
+    "bracelet": "Sport Band",
+    "gps": true,
+    "etanche": "50m",
+    "autonomie": "18 heures"
+  }
+}
+
+### 9. Get All Products
+GET http://localhost:3000/api/products
+
+### 10. Get Product by ID
+GET http://localhost:3000/api/products/42efb5a9-1b9b-46b0-8bf8-08bccfb0714a
+
+### 11. Update Product
+patch http://localhost:3000/api/products/42efb5a9-1b9b-46b0-8bf8-08bccfb0714a
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "name": "testUpdate",
+  "price": 1499.99,
+  "stock": 15
+}
+
+### 12. Delete Product
+DELETE http://localhost:3000/api/products/232f9a54-cbb5-4691-bc33-68c62042b38a
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+
+### ===============================
+### 🎨 PRODUCT VARIANTS
+### ===============================
+
+### 13. Create Product Variant
+POST http://localhost:3000/api/variants
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "name": "iPhone 16 Pro - Titanium Blue",
+  "color": "Titanium Blue",
+  "sku": "APPLE-IP16P-TB-256",
+  "productId": "0a9b4459-29bf-4395-84e6-e7b5d882668e",
+  "stock": 10,
+  "isDefault": true
+}
+
+### 14. Get All Product Variants
+GET http://localhost:3000/api/variants
+
+### 15. Get Product Variant by ID
+GET http://localhost:3000/api/variants/a1175136-d5c9-4a41-9f97-bcbd6318fb62
+
+### 16. Update Product Variant
+PATCH http://localhost:3000/api/variants/a1175136-d5c9-4a41-9f97-bcbd6318fb62
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+Content-Type: application/json
+
+{
+  "stock": 5,
+  "color": "Titanium Black"
+}
+
+### 17. Delete Product Variant
+DELETE http://localhost:3000/api/variants/a1175136-d5c9-4a41-9f97-bcbd6318fb62
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJpZCI6IjkyNzU4ODBlLWM4MjAtNDk2Yy1iZmVlLTM3OTRjMGUwYjZkMCIsIm5hbWUiOiJBZG1pbiIsImVtYWlsIjoiYWRtaW5AZXhhbXBsZS5jb20iLCJyb2xlIjoiQURNSU4iLCJpYXQiOjE3NDk1NTUzNTYsImV4cCI6MTc1MDE2MDE1Nn0.PlFLAETi5cQL-30-HESmxob53J68mP7jLs1WjOrgP5Y
+

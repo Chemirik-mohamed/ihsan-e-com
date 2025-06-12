@@ -14,6 +14,9 @@ export const productVariantBaseSchema = z.object({
 	stock: z.number().int().min(0, "Le stock doit être un entier positif"),
 });
 
+// ✅ Schéma pour l'update partiel (tous les champs optionnels)
+export const productVariantUpdateSchema = productVariantBaseSchema.partial();
+
 // Schéma de réponse API (côté frontend : tout en string sauf stock/isDefault)
 export const productVariantSchema = productVariantBaseSchema.extend({
 	id: z.string().uuid(),

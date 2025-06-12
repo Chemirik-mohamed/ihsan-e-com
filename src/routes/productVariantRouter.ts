@@ -10,5 +10,5 @@ export const productVariantRouter = new Hono();
 productVariantRouter.get("/", getAllProductVariants);
 productVariantRouter.get("/:id", getProductVariantById);
 productVariantRouter.post("/", withErrorHandler(createProductVariant));
-productVariantRouter.put("/:id", updateProductVariant);
+productVariantRouter.patch("/:id", updateProductVariant);
 productVariantRouter.delete("/:id", deleteProductVariant);

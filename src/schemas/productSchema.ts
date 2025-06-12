@@ -18,7 +18,11 @@ export const productBaseSchema = z.object({
 	price: z.number().nonnegative("Le prix doit être positif ou nul"),
 	stock: z.number().int().min(0, "Le stock doit être un entier positif"),
 	status: productStatusEnum.default(ProductStatus.EN_STOCK),
-	metadata: z.record(z.any()).optional(), // tu pourras le typer plus tard si tu veux
+	categorySlug: z
+		.string()
+		.min(1, "Le slug de la catégorie est requis")
+		.optional(),
+	metadata: z.record(z.any()).nullable().optional(),
 });
 
 // ✅ Schéma pour update (tous les champs optionnels)
@@ -33,6 +37,7 @@ export const productResponseSchema = productBaseSchema.extend({
 	variants: z.array(z.any()).optional(), // à typer plus tard
 	images: z.array(z.any()).optional(),
 	orderItems: z.array(z.any()).optional(),
+	category: z.any().optional(),
 });
 
 // ✅ Schéma interne avec les vraies dates JavaScript (utilisé côté backend si besoin)
@@ -44,6 +49,7 @@ export const productSchema = productBaseSchema.extend({
 	variants: z.array(z.any()).optional(),
 	images: z.array(z.any()).optional(),
 	orderItems: z.array(z.any()).optional(),
+	category: z.any().optional(),
 });
 
 export const productFoundResponseSchema = z.object({

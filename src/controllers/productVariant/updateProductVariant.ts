@@ -2,12 +2,13 @@ import type { Context } from "hono";
 import { prisma } from "../../lib/prisma";
 import {
 	productVariantBaseSchema,
+	productVariantUpdateSchema,
 	productVariantIdParamsSchema,
 	productVariantSchema,
 } from "../../schemas/productVariant";
 
 export const updateProductVariant = async (c: Context): Promise<Response> => {
-	// 1. Récupérer l’ID de la variante (par ex. via params ou body)
+	// 1. Récupérer l'ID de la variante (par ex. via params ou body)
 	const params = productVariantIdParamsSchema.parse(c.req.param());
 
 	// 2. Vérifier l'existence de la variante
@@ -20,9 +21,9 @@ export const updateProductVariant = async (c: Context): Promise<Response> => {
 	}
 
 	// 3. Valider les données reçues (on peut autoriser partial update si besoin)
-	const data = productVariantBaseSchema.parse(await c.req.json());
+	const data = productVariantUpdateSchema.parse(await c.req.json());
 
-	// 4. Vérifier l’unicité du SKU (si le SKU change)
+	// 4. Vérifier l'unicité du SKU (si le SKU change)
 	if (data.sku && data.sku !== existingVariant.sku) {
 		const existingSku = await prisma.productVariant.findUnique({
 			where: { sku: data.sku },

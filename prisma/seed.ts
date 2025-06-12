@@ -11,13 +11,14 @@ async function main() {
 	await prisma.image.deleteMany();
 	await prisma.productVariant.deleteMany();
 	await prisma.product.deleteMany();
+	await prisma.category.deleteMany();
 	await prisma.user.deleteMany();
 
 	// Hash
 	const passwordHash = await bcrypt.hash("motdepasse123", SALT_ROUNDS);
 	const passwordAdmin = await bcrypt.hash("admin1234", SALT_ROUNDS);
 
-	// Seed
+	// Seed users
 
 	await prisma.user.createMany({
 		data: [
@@ -48,8 +49,43 @@ async function main() {
 		],
 	});
 	console.log("✅ Utilisateurs insérés avec succès");
-}
 
+	// seed category
+
+	await prisma.category.createMany({
+		data: [
+			{
+				name: "Homme",
+				slug: "homme",
+			},
+			{
+				name: "Femme",
+				slug: "femme",
+			},
+		],
+	});
+
+	console.log("✅ Catégories insérées avec succès");
+
+	// seed product
+
+	await prisma.product.createMany({
+		data: [
+			{
+				name: "produit 1",
+				slug: "produit-slug",
+				description: "test product",
+				sku: "product-IP15P-128",
+				price: 1199.99,
+				stock: 50,
+				status: "EN_STOCK",
+				categorySlug: "homme",
+			},
+		],
+	});
+	console.log("✅ Produits insérés avec succès");
+}
+// seed product
 main()
 	.catch((e) => {
 		console.error("Erreur lors du seed :", e);
